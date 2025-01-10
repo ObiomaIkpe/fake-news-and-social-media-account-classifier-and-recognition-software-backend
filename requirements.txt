@@ -1,0 +1,3 @@
+djangorestframework
+Pillow
+djangorestframework-simplejwt
