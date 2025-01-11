@@ -2,8 +2,15 @@ from blogapi.serializers import BlogSerializer, UpdateUserProfileSerializer, Use
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import api_view, permission_classes
 from .models import Blog
+
+
+
+class BlogListPagination(PageNumberPagination):
+    page_size = 6
+
 # Create your views here.
 
 @api_view(["POST"])
@@ -27,8 +34,14 @@ def create_blog(request):
 @api_view(["GET"])
 def blog_list(request):
     blogs = Blog.objects.all()
-    serializer = BlogSerializer(blogs, many=True)
-    return Response(serializer.data)
+
+    # paginating the blogs
+    paginator = BlogListPagination()
+    paginatedresponse = paginator.paginate_queryset(blogs, request)
+    serializer = BlogSerializer(paginatedresponse, many=True)
+    # return Response(serializer.data)
+    return paginator.get_paginated_response(serializer.data)
+
 
 
 @api_view(["PUT"])
