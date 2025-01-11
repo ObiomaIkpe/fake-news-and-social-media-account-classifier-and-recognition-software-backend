@@ -23,6 +23,7 @@ class Blog(models.Model):
                 )
     
     title = models.CharField(max_length=255, null=False)
+    is_fake = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, related_name="blogs", null=True)

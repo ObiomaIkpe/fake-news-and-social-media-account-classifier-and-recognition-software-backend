@@ -26,10 +26,23 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return new_user
     
 
+
+class SimpleAuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ["id", "username", "first_name", "last_name"]
+
+        
+    
+
 class BlogSerializer(serializers.ModelSerializer):
+    author = SimpleAuthorSerializer(read_only=True)
     class Meta:
         model = Blog
-        feilds = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', 'is_draft', ]
+        fields = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', 'is_draft', 'is_fake', 'published_date']
+
+        
+        
         
 
         
