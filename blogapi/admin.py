@@ -5,9 +5,10 @@ from .models import CustomUser, Blog
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
-    list_display = ("username", "email", "first_name", "last_name", "is_fake", "fake_count", "password")
+    list_display = ("username", "email", "first_name", "last_name", "is_fake", "fake_count", "password", "bio", "profile_picture")
 admin.site.register(CustomUser, CustomUserAdmin)
 
 class BlogAdmin(admin.ModelAdmin):
     list_display = ("title", "is_draft", "category", "created_at", "author")
 admin.site.register(Blog, BlogAdmin)
+

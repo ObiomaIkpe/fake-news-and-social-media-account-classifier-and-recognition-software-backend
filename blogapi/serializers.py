@@ -27,12 +27,19 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     
 
 
+class UpdateUserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ["first_name", "last_name", "bio", "profile_picture", ]
+
+
 class SimpleAuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = ["id", "username", "first_name", "last_name"]
 
-        
+
+
     
 
 class BlogSerializer(serializers.ModelSerializer):

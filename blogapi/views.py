@@ -1,4 +1,4 @@
-from blogapi.serializers import BlogSerializer, UserRegistrationSerializer
+from blogapi.serializers import BlogSerializer, UpdateUserProfileSerializer, UserRegistrationSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -54,5 +54,16 @@ def delete_blog(request, pk):
         return Response({"you can only delete your own blog"}, status=status.HTTP_403_FORBIDDEN)
     blog.delete()
     return Response({"blog deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def update_user_profile(request):
+    user = request.user
+    serializer = UpdateUserProfileSerializer(user, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
