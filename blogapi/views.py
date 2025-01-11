@@ -14,10 +14,11 @@ def register_user(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["POST"])
-@permission_classes(IsAuthenticated)
+@permission_classes([IsAuthenticated])
 def create_blog(request):
+    user = request.user
     serializer = BlogSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
+        serializer.save(author=user)
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
