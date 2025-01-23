@@ -59,15 +59,16 @@ export async function getUsername(){
 export async function createBlog(data){
     try {
         const response = await api.post("create_blog/", data);
-        return response.data;
-    } catch (error) {
-        throw new Error(error.message);
+        return response.data; 
+    } catch (err) {
+        console.log(err)
+        throw new Error(err.message);
     }
 }
 
 export async function updateBlog(data, id){
     try {
-        const response = await api.put(`update_blog/${id}`, data);
+        const response = await api.put(`update_blog/${id}/`, data);
         return response.data;
     } catch (error) {
         if(error.response){

@@ -3,7 +3,7 @@ const Modal = ({children, toggleModal}) => {
         if(e.target.id === "modal"){
             toggleModal()
         }
-    }
+    } 
 
     return (
         <div id="modal" onClick={handleToggleModal}

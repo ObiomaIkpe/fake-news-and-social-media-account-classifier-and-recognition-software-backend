@@ -5,7 +5,7 @@ from .models import Blog
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ['id', 'email', 'username', 'first_name', 'last_name', 'password', 'is_fake', 'fake_count']
+        fields = ['id', 'email', 'username', 'first_name', 'last_name', 'password', 'is_fake', 'fake_count', "bio"]
         # extra_kwargs = {
         #     'password': {'write_only': True}
         # }
@@ -45,17 +45,16 @@ class SimpleAuthorSerializer(serializers.ModelSerializer):
 
 class BlogSerializer(serializers.ModelSerializer):
     author = SimpleAuthorSerializer(read_only=True)
-    author_id = serializers.IntegerField()
     class Meta:
         model = Blog
-        fields = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', "author_id", 'is_draft', 'is_fake', 'published_date']
+        fields = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', 'is_draft', 'is_fake', 'published_date']
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
     author_posts = serializers.SerializerMethodField()
     class Meta:
         model = get_user_model()
-        fields = ["id", "username", "email", "first_name", "last_name", "job_title", "bio", "profile_picture", "author_posts", "profile_picture_url"]
+        fields = ["id", "username", "email", "first_name", "last_name", "bio", "profile_picture", "author_posts", "profile_picture_url"]
 
     
     def get_author_posts(self, user):

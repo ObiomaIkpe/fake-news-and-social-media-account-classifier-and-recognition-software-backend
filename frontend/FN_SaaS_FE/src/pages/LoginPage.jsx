@@ -18,6 +18,8 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
   const mutation = useMutation({
     mutationFn: (data) => signin(data),
     onSuccess: (response) => {
+      console.log(response, "response");
+      
         localStorage.setItem("access", response.access)
         localStorage.setItem("refresh", response.refresh)
         setIsAuthenticated(true)
@@ -28,6 +30,7 @@ const LoginPage = ({setIsAuthenticated, setUsername}) => {
 
     },
     onError: (err) => {
+      console.log("error from login", err)
       toast.error(err.message);
     },
   });
