@@ -1,4 +1,4 @@
-import {HiPencilAlt} from "react-icons/hi"
+import {HiCalculator, HiPencilAlt} from "react-icons/hi"
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
@@ -33,6 +33,16 @@ const Hero = ({userInfo, authUsername, toggleModal}) => {
             />
           </span>
         )}
+
+
+{/* {!userInfo?.is_fake && (
+          <span>
+            <HiCalculator
+              className="dark:text-white text-2xl cursor-pointer"
+            
+            /> wow wow 
+          </span>
+        )} */}
     </div>
 
     <p className="text-[#3B3C4A] text-[16px] max-md:leading-[2rem] lg:leading-normal lg:mx-[200px] text-center dark:text-[#BABABF]">
