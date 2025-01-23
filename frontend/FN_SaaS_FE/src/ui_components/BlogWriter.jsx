@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import pic from "../images/pic.jpg"
-import { BASE_URL } from "@/api"
+import { BASE_URL } from "@/api" 
 import { FormatDate } from "@/services/formatDate"
 
 const BlogWriter = ({blog}) => {

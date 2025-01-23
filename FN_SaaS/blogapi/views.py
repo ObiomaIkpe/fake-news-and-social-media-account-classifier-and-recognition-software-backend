@@ -128,7 +128,7 @@ def get_username(request):
 @api_view(['GET'])
 def get_userinfo(request, username):
     User = get_user_model()
-    user = User.objects.get(username=username)
+    user = User.objects.get(username=username) 
     serializer = UserInfoSerializer(user)
     return Response(serializer.data)
 

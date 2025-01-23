@@ -47,7 +47,7 @@ class BlogSerializer(serializers.ModelSerializer):
     author = SimpleAuthorSerializer(read_only=True)
     class Meta:
         model = Blog
-        fields = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', 'is_draft', 'is_fake', 'published_date']
+        fields = ['id', 'title', 'author', 'slug', 'category', 'content', 'featured_image', 'created_at', 'updated_at', 'is_draft', 'is_fake', 'published_date'] 
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
