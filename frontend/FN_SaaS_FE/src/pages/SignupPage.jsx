@@ -159,7 +159,7 @@ const SignupPage = ({ userInfo, updateForm, toggleModal }) => {
         {errors?.first_name?.message && (
           <InputError error={errors.first_name.message} />
         )}
-      </div>
+      </div> 
 
       <div>
         <Label htmlFor="last_name">Last Name</Label>

@@ -95,16 +95,17 @@ export async function getUserInfo(username) {
         const response = await api.get(`get_userinfo/${username}`);
         return response.data;
     } catch (error) {
-        throw new Error(error.message)
+        throw new Error(error.response)
     }
 }
 
 export async function updateProfile(data) {
     try {
-        
+        const response = await api.put(`update_user/`, data)
+        return response.data;
     } catch (error) {
-        if(error.message){
-            throw new Error(error?.response?.data.username[0] || "failed to upload profile");
+        if(error.response){
+            throw new Error(error?.response?.data || "failed to upload profile");
         }
         throw new Error(error.message);
     }
