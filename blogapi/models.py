@@ -20,7 +20,8 @@ class Blog(models.Model):
     CATEGORY = (("technology", "technology"),
                 ("economy", "economy"),
                 ("business", "business"),
-                ("lifestyle", "lifestyle")
+                ("lifestyle", "lifestyle"),
+                ("politics", "politics")
                 )
     
     title = models.CharField(max_length=255, null=False)

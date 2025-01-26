@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('published_date', models.DateTimeField(blank=True, null=True)),
                 ('is_draft', models.BooleanField(default=True)),
-                ('category', models.CharField(choices=[('technology', 'technology'), ('economy', 'economy'), ('business', 'business'), ('lifestyle', 'lifestyle')], max_length=255)),
+                ('category', models.CharField(choices=[('technology', 'technology'), ('economy', 'economy'), ('business', 'business'), ('lifestyle', 'lifestyle'), ('politics', 'politics')], max_length=255)),
                 ('featured_image', models.ImageField(blank=True, null=True, upload_to='blog_img')),
                 ('author', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='blogs', to=settings.AUTH_USER_MODEL)),
             ],
