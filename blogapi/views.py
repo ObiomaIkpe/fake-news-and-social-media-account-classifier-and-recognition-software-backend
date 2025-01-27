@@ -8,7 +8,93 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.pagination import PageNumberPagination
 
+# import ML model
+import os 
+import joblib
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
+# load model
+
+# MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model', )
+# VECTORIZER_PATH = os.path.join(BASE_DIR, 'classifier/models/vectorizer.joblib')
+
+# model = joblib.load(MODEL_PATH)
+
+# vectorizer = joblib.load(VECTORIZER_PATH)
+
+
+# def classify_new_news(request):
+#     try:
+#         # get unclassified blogs from the database.
+#         unclassified_news = Blog.objects.filter(is_classfied=False)
+
+#         if not unclassified_news.exists():
+#             return JsonResponse({"message": "No unclassified news found"}, status=200)
+        
+#         classified_results = []
+
+#         for blog in unclassified_news:
+#             # combine title and body for classification
+#             text = f"{blog.title} {blog.content}"
+
+#             # preprocessing and classifiying the text.
+#             cleaned_text = text.lower().strip() # adjust cleaning according to training model
+#             # vectorized_text = vectorizer.transform([cleaned_text])
+#             # prediction = model.predict(vectorized_text)[0]
+
+
+#             # update the blog object
+#             # blog.is_fake = prediction
+#             blog.is_classfied = True
+#             blog.save()
+
+#             # update the author's is_fake field
+#             # author = blog.author
+#             # if prediction == True:
+#             #     author.fakeCount += 1
+#             #     if author.fakeCount >= 3:
+#             #         author.is_fake = True
+#             #     else:
+#             #         author.is_fake = False
+#             #     author.save()
+
+#                 # user = get_user_model()
+#                 # if blog.is_fake:
+#                 #     user = User.objects.get(username=username)
+#             # user_profile = request.user
+#             # if prediction == "fake":
+#             #     user_profile.is_fake = True
+#             # else:
+#             #     user_profile.is_fake = False
+#             # user_profile.save() 
+
+
+
+#              # Add result to the response
+#             # classified_results.append({
+#             #     "is_fake": blog.is_fake,
+#             #     "title": blog.title,
+#             #     "classification": prediction,
+#             #     "updated_blog_model": blog,
+#             #     "author": author,
+
+#             # })
+
+#         return JsonResponse({"classified_news": classified_results}, status=200)
+
+#     except Exception as e:
+#         return JsonResponse({"error": str(e)}, status=500)
+
+# # end of ML model class
+
+
+
+
+
+
+# start of regular API classes
 class BlogListPagination(PageNumberPagination):
     page_size= 3
 
@@ -127,7 +213,7 @@ def get_username(request):
 
 @api_view(['GET'])
 def get_userinfo(request, username):
-    User = get_user_model()
+    User = get_user_model() # use this as reference
     user = User.objects.get(username=username) 
     serializer = UserInfoSerializer(user)
     return Response(serializer.data)

@@ -11,6 +11,8 @@ class CustomUser(AbstractUser):
     fake_count = models.IntegerField(default=0)
     profile_picture = models.ImageField(upload_to="profile_img", blank=True, null=True)
     profile_picture_url = models.URLField(blank=True, null=True)
+    # new is_classified field.
+    # is_classified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
@@ -56,3 +58,6 @@ class Blog(models.Model):
             self.published_date = timezone.now()
 
         super().save(*args, **kwargs)
+
+
+

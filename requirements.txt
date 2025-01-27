@@ -13,3 +13,7 @@ pillow==11.0.0
 PyJWT==2.9.0
 sqlparse==0.5.1
 tzdata==2024.2
+joblib
+scikit-learn 
+pandas
+
