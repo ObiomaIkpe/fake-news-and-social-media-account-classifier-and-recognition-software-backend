@@ -165,7 +165,7 @@ AUTH_USER_MODEL = 'blogapi.CustomUser'
 
 CORS_ALLOWED_ORIGINS = [
 "http://localhost:5173",
-"https://fake-news-web-service-frontend.onrender.com"
+"https://fake-news-web-service-frontend.onrender.com",
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True

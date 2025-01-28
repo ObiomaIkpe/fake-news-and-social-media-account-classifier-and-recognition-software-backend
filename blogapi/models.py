@@ -26,7 +26,7 @@ class Blog(models.Model):
                 ("politics", "politics")
                 )
     
-    title = models.CharField(max_length=255, null=False)
+    title = models.CharField(null=False)
     is_fake = models.BooleanField(default=False)
     slug = models.SlugField(unique=True, blank=True)
     content = models.TextField()
