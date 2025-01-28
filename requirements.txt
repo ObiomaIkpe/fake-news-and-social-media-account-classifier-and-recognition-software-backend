@@ -16,4 +16,5 @@ tzdata==2024.2
 joblib
 scikit-learn 
 pandas
+psycopg2
 
