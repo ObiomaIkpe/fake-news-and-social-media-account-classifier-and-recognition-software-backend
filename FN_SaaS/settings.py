@@ -105,6 +105,12 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 
@@ -159,7 +165,7 @@ AUTH_USER_MODEL = 'blogapi.CustomUser'
 
 CORS_ALLOWED_ORIGINS = [
 "http://localhost:5173",
-"https://fake-news-backend-api.onrender.com"
+"https://fake-news-web-service-frontend.onrender.com"
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
